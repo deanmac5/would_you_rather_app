@@ -4,10 +4,10 @@ import React, { Component, Fragment } from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 
 import Add from './components/add';
+import CustomNavBar from './components/customnavbar';
 import Dashboard from './components/dashboard';
 import Leaderboard from './components/leaderboard';
 import LoadingBar from 'react-redux-loading';
-import Nav from './components/nav';
 import { connect } from 'react-redux';
 
 class App extends Component {
@@ -22,7 +22,7 @@ class App extends Component {
         <Fragment>
           <LoadingBar />
           <div className='container'>
-            <Nav />
+            <CustomNavBar />
             {this.props.loading === true
             ? null
             : <div>
