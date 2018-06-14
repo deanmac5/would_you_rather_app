@@ -1,18 +1,38 @@
-import React, { Component } from 'react';
 import './App.css';
 
+import React, { Component, Fragment } from 'react';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+
+import Add from './components/add';
+import Dashboard from './components/dashboard';
+import Leaderboard from './components/leaderboard';
+import LoadingBar from 'react-redux-loading';
+import Nav from './components/nav';
+import { connect } from 'react-redux';
+
 class App extends Component {
+
+  componentDidMount() {
+    // this.props.dispatch(handleInitialData())
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Router>
+        <Fragment>
+          <LoadingBar />
+          <div className='container'>
+            <Nav />
+            {this.props.loading === true
+            ? null
+            : <div>
+              <Route path='/' exact component={Dashboard} />
+              <Route path='/add' component={Add} />
+              <Route path='/leaderboard' component={Leaderboard}/>
+            </div>}
+          </div>
+        </Fragment>
+      </Router>
     );
   }
 }
