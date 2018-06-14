@@ -1,81 +1,73 @@
 import {
-    Collapse,
-    DropdownItem,
-    DropdownMenu,
-    DropdownToggle,
-    Nav,
-    NavItem,
-    NavLink,
-    Navbar,
-    NavbarBrand,
-    NavbarToggler,
-    UncontrolledDropdown
+  Collapse,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Nav,
+  NavItem,
+  NavLink,
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
+  UncontrolledDropdown
 } from 'reactstrap';
+import React, { Component } from 'react';
 
-// import { NavLink } from 'react-router-dom';
-import React from 'react';
+class CustomNavBar extends Component {
+  constructor(props) {
+    super(props);
 
-export default function CustomNavBar() {
-    return (
+    this.toggleNavbar = this.toggleNavbar.bind(this);
+    this.state = {
+      collapsed: true
+    };
+  }
+
+  toggleNavbar() {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
+  }
+
+  render() {
+  return(
         <div>
-             <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
-          {/* <NavbarToggler onClick={this.toggle} /> */}
-          {/* <Collapse isOpen={this.state.isOpen} navbar> */}
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href='/'>Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href='/add'>Add</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href='leaderboard'>Leaderboard</NavLink>
-              </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
+  <Navbar color="dark" dark expand="md">
+    <NavbarBrand href="/">WYR?</NavbarBrand>
+    <NavbarToggler onClick={this.toggle} />
+    <Collapse isOpen={this.state.isOpen} navbar>
+      <Nav className="ml-left" navbar>
+
+        <NavItem>
+          <NavLink href='/add'>Add Questions</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink href='leaderboard'>Leaderboard</NavLink>
+        </NavItem>
+        <UncontrolledDropdown nav inNavbar>
+          <DropdownToggle nav caret>
+            Logged in as: 
                 </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    Option 1
+          <DropdownMenu right>
+            <DropdownItem>
+              Option 1
                   </DropdownItem>
-                  <DropdownItem>
-                    Option 2
+            <DropdownItem>
+              Option 2
                   </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
+            <DropdownItem divider />
+            <DropdownItem>
+              Reset
                   </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </Nav>
-          {/* </Collapse> */}
-        </Navbar>
-      </div>
+          </DropdownMenu>
+        </UncontrolledDropdown>
+      </Nav>
+    </Collapse>
+    </Navbar>
+      </div >
 
-
-
-
-        // <nav className='nav'>
-        //     <ul>
-        //         <li>
-        //             <NavLink to='/' exact activeClassName='active'>
-        //                 Home
-        //             </NavLink>
-        //         </li>
-        //         <li>
-        //             <NavLink to='/add' exact activeClassName='active'>
-        //                 Add
-        //             </NavLink>
-        //         </li>
-        //         <li>
-        //             <NavLink to='/leaderboard' exact activeClassName='active'>
-        //                 Leaderboard
-        //             </NavLink>
-        //         </li>
-
-        //     </ul>
-        // </nav>
     );
 }
+}
+
+export default CustomNavBar;
