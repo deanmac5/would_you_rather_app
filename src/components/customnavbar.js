@@ -32,11 +32,11 @@ class CustomNavBar extends Component {
   render() {
   return(
         <div>
-  <Navbar color="dark" dark expand="md">
+  <Navbar color="primary" dark expand="md">
     <NavbarBrand href="/">WYR?</NavbarBrand>
     <NavbarToggler onClick={this.toggle} />
     <Collapse isOpen={this.state.isOpen} navbar>
-      <Nav className="ml-left" navbar>
+      <Nav className="ml-auto" navbar>
 
         <NavItem>
           <NavLink href='/add'>Add Questions</NavLink>
@@ -48,16 +48,16 @@ class CustomNavBar extends Component {
           <DropdownToggle nav caret>
             Logged in as: 
                 </DropdownToggle>
-          <DropdownMenu right>
-            <DropdownItem>
+          <DropdownMenu className='push-right'>
+            {/* <DropdownItem>
               Option 1
                   </DropdownItem>
             <DropdownItem>
               Option 2
-                  </DropdownItem>
+                  </DropdownItem> */}
             <DropdownItem divider />
             <DropdownItem>
-              Reset
+              Log Out
                   </DropdownItem>
           </DropdownMenu>
         </UncontrolledDropdown>
