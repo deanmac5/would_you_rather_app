@@ -9,11 +9,15 @@ import Dashboard from './components/dashboard';
 import Leaderboard from './components/leaderboard';
 import LoadingBar from 'react-redux-loading';
 import { connect } from 'react-redux';
+import { handleInitialData } from './actions/shared';
 
 class App extends Component {
 
   componentDidMount() {
-    // this.props.dispatch(handleInitialData())
+    const { dispatch, loading } = this.props
+    if (loading === true ) {
+      dispatch(handleInitialData())
+    }
   }
 
   render() {
@@ -37,4 +41,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps ({ authedUser, users }) {
+  return {
+    loading: authedUser === null
+  }
+}
+
+export default connect(mapStateToProps)(App);

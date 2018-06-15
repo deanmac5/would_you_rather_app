@@ -30,44 +30,40 @@ class CustomNavBar extends Component {
   }
 
   render() {
-  return(
-        <div>
-  <Navbar color="primary" dark expand="md">
-    <NavbarBrand href="/">WYR?</NavbarBrand>
-    <NavbarToggler onClick={this.toggle} />
-    <Collapse isOpen={this.state.isOpen} navbar>
-      <Nav className="ml-auto" navbar>
-
-        <NavItem>
-          <NavLink href='/add'>Add Questions</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href='leaderboard'>Leaderboard</NavLink>
-        </NavItem>
-        <UncontrolledDropdown nav inNavbar>
-          <DropdownToggle nav caret>
-            Logged in as: 
+    return (
+      <div>
+        <Navbar color="primary" dark expand="md">
+          <NavbarBrand href="/">Would You Rather?</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+            <NavItem>
+                <NavLink href='/'>Home</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href='/add'>Add Questions</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href='leaderboard'>Leaderboard</NavLink>
+              </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Logged in as:
                 </DropdownToggle>
-          <DropdownMenu className='push-right'>
-            {/* <DropdownItem>
-              Option 1
+                <DropdownMenu className='push-right'>
+             
+                  <DropdownItem>
+                    Log Out
                   </DropdownItem>
-            <DropdownItem>
-              Option 2
-                  </DropdownItem> */}
-            <DropdownItem divider />
-            <DropdownItem>
-              Log Out
-                  </DropdownItem>
-          </DropdownMenu>
-        </UncontrolledDropdown>
-      </Nav>
-    </Collapse>
-    </Navbar>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+          </Collapse>
+        </Navbar>
       </div >
 
     );
-}
+  }
 }
 
 export default CustomNavBar;
