@@ -1,13 +1,32 @@
+import { ListGroup, ListGroupItem } from 'reactstrap';
 import React, { Component } from 'react';
+
+import Question from './question';
+import { connect } from 'react-redux';
 
 class Dashboard extends Component {
     render(){
         return (
             <div>
-                <h1>This is the dashboard</h1>
+                <h3>Questions</h3>
+                <ListGroup>
+                    {this.props.questionIds.map((id) => (
+                        <ListGroupItem key={id}>
+                            <Question id={id}/>
+                        </ListGroupItem>
+                    ))}
+                </ListGroup>
             </div>
         );
     }
 }
 
-export default Dashboard
+function mapStateToProps({ questions }){
+    console.log(questions);
+    return {
+        questionIds: Object.keys(questions)
+            .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+    }
+}
+
+export default connect(mapStateToProps)(Dashboard);

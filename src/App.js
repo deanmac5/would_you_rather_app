@@ -14,7 +14,8 @@ import { handleInitialData } from './actions/shared';
 class App extends Component {
 
   componentDidMount() {
-    this.props.dispatch(handleInitialData())    
+    this.props.dispatch(handleInitialData())  
+    console.log(this.props);  
   }
 
   render() {
