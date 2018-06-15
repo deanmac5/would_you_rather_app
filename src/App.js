@@ -14,10 +14,7 @@ import { handleInitialData } from './actions/shared';
 class App extends Component {
 
   componentDidMount() {
-    const { dispatch, loading } = this.props
-    if (loading === true ) {
-      dispatch(handleInitialData())
-    }
+    this.props.dispatch(handleInitialData())    
   }
 
   render() {
@@ -41,7 +38,7 @@ class App extends Component {
   }
 }
 
-function mapStateToProps ({ authedUser, users }) {
+function mapStateToProps ({ authedUser }) {
   return {
     loading: authedUser === null
   }

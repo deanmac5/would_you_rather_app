@@ -13,6 +13,8 @@ import {
 } from 'reactstrap';
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+
 class CustomNavBar extends Component {
   constructor(props) {
     super(props);
@@ -38,17 +40,17 @@ class CustomNavBar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
             <NavItem>
-                <NavLink href='/'>Home</NavLink>
+                <NavLink href='/' >Home</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href='/add'>Add Questions</NavLink>
+                <NavLink href='/add' >Add Questions</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href='leaderboard'>Leaderboard</NavLink>
+                <NavLink href='leaderboard' >Leaderboard</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  Logged in as:
+                  Logged in as: {this.props.authedUser}
                 </DropdownToggle>
                 <DropdownMenu className='push-right'>
              
@@ -66,4 +68,8 @@ class CustomNavBar extends Component {
   }
 }
 
-export default CustomNavBar;
+function mapStateToProps({ authedUser }) {
+  return {authedUser: authedUser}
+}
+
+export default connect(mapStateToProps)(CustomNavBar);
