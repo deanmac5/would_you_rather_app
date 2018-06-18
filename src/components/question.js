@@ -5,8 +5,8 @@ import { formatQuestion } from '../utils/_DATA';
 
 class Question extends Component {
     render() {
-        const question = this.props
-
+        const question = this.props.question
+        console.log("!!!",question)
         if (question === null) {
             return <p> This question does not exist</p>
         }
@@ -19,13 +19,15 @@ class Question extends Component {
             optionTwo
         } = question
 
+
+
         return (
             <div>
                 <h5>{id}</h5>
                 <p>{author}</p>
                 <p>{timestamp}</p>
-                <p>{optionOne}</p>
-                <p>{optionTwo}</p>
+                <p>{optionOne.text}: {optionOne.votes.length}</p>
+                <p>{optionTwo.text}: {optionTwo.votes.length}</p>
             </div>
         )
     }
@@ -36,8 +38,8 @@ function mapStateToProps({authedUser, users, questions},{id}){
     return {
         authedUser,
         question: question
-        ? formatQuestion(question.optionOne,question.optionTwo, question.author)
-        : null
+        // ? formatQuestion(question.optionOne,question.optionTwo, question.author)
+        // : null
     }
 }
 
