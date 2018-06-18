@@ -21,11 +21,11 @@ class Question extends Component {
 
         return (
             <div>
-                <h5>id</h5>
-                <p>author</p>
-                <p>timestamp</p>
-                <p>optionOne</p>
-                <p>optionTwo</p>
+                <h5>{id}</h5>
+                <p>{author}</p>
+                <p>{timestamp}</p>
+                <p>{optionOne}</p>
+                <p>{optionTwo}</p>
             </div>
         )
     }
