@@ -1,31 +1,72 @@
+import { Button, Card, CardText, CardTitle, Col, Container, Nav, NavItem, NavLink, Row, TabContent, TabPane } from 'reactstrap';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import React, { Component } from 'react';
 
 import Question from './question';
+import classnames from 'classnames';
 import { connect } from 'react-redux';
 
 class Dashboard extends Component {
-    render(){
+    constructor(props) {
+        super(props);
+
+        this.toggle = this.toggle.bind(this);
+        this.state = {
+            activeTab: '1'
+        };
+    }
+
+    toggle(tab) {
+        if (this.state.activeTab !== tab) {
+            this.setState({
+                activeTab: tab
+            });
+        }
+    }
+
+
+    render() {
         return (
             <div>
-                <h3>Questions</h3>
-                <ListGroup>
-                    {this.props.questionIds.map((id) => (
-                        <ListGroupItem key={id}>
-                            <Question id={id}/>
-                        </ListGroupItem>
-                    ))}
-                </ListGroup>
+                {/* // <Container> */}
+                    <Nav tabs>
+                        <NavItem>
+                            <NavLink
+                                className={classnames({ active: this.state.activeTab === '1' })}
+                                onClick={() => { this.toggle('1'); }}>
+                                Unanswered questions
+                        </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink
+                                className={classnames({ active: this.state.activeTab === '1' })}
+                                onClick={() => { this.toggle('2'); }}>
+                                Answered questions
+                        </NavLink>
+                        </NavItem>
+
+                    </Nav>
+                    <TabContent activeTab={this.state.activeTab}>
+                        <TabPane tabId='1'>
+                            {this.props.questionIds.map((id) => (
+                                <Question id={id} />
+                            ))}
+                        </TabPane>
+                        <TabPane tabId='2'>
+                            <h3>Answered Questions</h3>
+                        </TabPane>
+                    </TabContent>
+                {/* </Container> */}
             </div>
         );
     }
 }
 
-function mapStateToProps({ questions }){
+function mapStateToProps({ questions }) {
     console.log(questions);
     return {
         questionIds: Object.keys(questions)
-            .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+            .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
     }
 }
 
