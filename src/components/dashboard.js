@@ -1,5 +1,4 @@
-import { Button, Card, CardText, CardTitle, Col, Container, Nav, NavItem, NavLink, Row, TabContent, TabPane } from 'reactstrap';
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import { Nav, NavItem, NavLink, Row, TabContent, TabPane } from 'reactstrap';
 import React, { Component } from 'react';
 
 import Question from './question';
@@ -28,7 +27,7 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
-                {/* // <Container> */}
+                <Row> </Row>
                     <Nav tabs>
                         <NavItem>
                             <NavLink
@@ -56,7 +55,7 @@ class Dashboard extends Component {
                             <h3>Answered Questions</h3>
                         </TabPane>
                     </TabContent>
-                {/* </Container> */}
+                
             </div>
         );
     }

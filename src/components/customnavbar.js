@@ -39,9 +39,7 @@ class CustomNavBar extends Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-            <NavItem>
-                <NavLink href='/' >Home</NavLink>
-              </NavItem>
+         
               <NavItem>
                 <NavLink href='/add' >Add Questions</NavLink>
               </NavItem>
