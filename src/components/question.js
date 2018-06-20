@@ -1,4 +1,5 @@
 import { Card, CardBody, CardText, CardTitle } from 'reactstrap';
+import { Link, withRouter } from 'react-router-dom'
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
@@ -22,15 +23,15 @@ class Question extends Component {
 
 
         return (
-           
+            <Link to={`/answer/${id}`} >
                 <Card>
-
                     <CardBody>
                         <CardTitle>Would you rather...</CardTitle>
                         <CardText>{optionOne.text}: {optionOne.votes.length}</CardText>
                         <CardText>{optionTwo.text}: {optionTwo.votes.length}</CardText>
                     </CardBody>
                 </Card>
+            </Link>
 
         )
     }

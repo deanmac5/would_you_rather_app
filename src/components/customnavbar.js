@@ -41,10 +41,10 @@ class CustomNavBar extends Component {
             <Nav className="ml-auto" navbar>
          
               <NavItem>
-                <NavLink href='/add' >Add Questions</NavLink>
+                <NavLink href='/add'>Add Questions</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href='leaderboard' >Leaderboard</NavLink>
+                <NavLink href='leaderboard'>Leaderboard</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
