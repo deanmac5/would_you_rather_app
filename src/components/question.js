@@ -23,7 +23,7 @@ class Question extends Component {
 
 
         return (
-            <Link to={`/answer/${id}`} >
+            <Link to={`/answer/${id}`}>
                 <Card>
                     <CardBody>
                         <CardTitle>Would you rather...</CardTitle>

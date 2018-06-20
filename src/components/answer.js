@@ -1,11 +1,40 @@
 import React, { Component } from 'react';
 
+import Question from '../components/question';
+import { connect } from 'react-redux';
+
 class Answer extends Component {
     render() {
+        const { id, replies } = this.props
         return (
-            <h1>This is the answer page</h1>
-        );
+          <div>
+              <h3>Question</h3>
+            <Question id={id} />
+            {/* <NewTweet id={id} /> */}
+            {/* {replies.length !== 0 && <h3 className='center'>Replies</h3>} */}
+            {/* <ul>
+              {replies.map((replyId) => (
+                <li key={replyId}>
+                  <Tweet id={replyId}/>
+                </li>
+              ))}
+            </ul> */}
+          </div>
+        )
     }
 }
 
-export default Answer;
+function mapStateToProps ({ authedUser, questions, users }, props) {
+    const { id } = props.match.params
+  
+    return {
+      id,
+    //   replies: !tweets[id]
+    //     ? []
+    //     : tweets[id].replies.sort((a,b,) => tweets[b].timestamp - tweets[a].timestamp)
+    }
+  }
+  
+export default connect(mapStateToProps)(Answer)
+
+
