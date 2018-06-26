@@ -1,7 +1,7 @@
 import './App.css';
 
 import React, { Component, Fragment } from 'react';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Redirect, Route, BrowserRouter as Router } from 'react-router-dom';
 
 import Add from './components/add';
 import Answer from './components/answer';
@@ -20,6 +20,16 @@ class App extends Component {
     console.log(this.props);  
   }
 
+  checkAuthedUser() {
+    const { authedUser } = this.props
+    console.log(authedUser);
+    return authedUser === null
+      ? <Redirect to='/login' />
+      : <div>
+          <Redirect to='/' />
+        </div>
+  }
+
   render() {
     return (
       <Router>
@@ -29,12 +39,19 @@ class App extends Component {
             <CustomNavBar />
             {this.props.loading === true
             ? null
-            : <div>
+            : 
+            <div>
+            {this.checkAuthedUser()}
+              <Route
+                exact path='/login'
+                component={Login}
+              />
+
               <Route path='/' exact component={Dashboard} />
               <Route path='/add' component={Add} />
               <Route path='/leaderboard' component={Leaderboard}/>
               <Route path='/answer/:id' component={Answer}/>
-              <Route path='/login' component={Login}/>
+             
             </div>}
           </div>
         </Fragment>
@@ -45,7 +62,7 @@ class App extends Component {
 
 function mapStateToProps ({ authedUser }) {
   return {
-    loading: authedUser === null
+    authedUser
   }
 }
 

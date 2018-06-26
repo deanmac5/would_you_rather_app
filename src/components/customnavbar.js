@@ -14,6 +14,7 @@ import {
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
+import { unSetAuthedUser } from '../actions/authedUser';
 
 class CustomNavBar extends Component {
   constructor(props) {
@@ -23,6 +24,12 @@ class CustomNavBar extends Component {
     this.state = {
       collapsed: true
     };
+  }
+
+  handleLogOff = (e) => {
+    e.preventDefault()
+    this.props.dispatch(unSetAuthedUser());
+    
   }
 
   toggleNavbar() {
@@ -47,12 +54,12 @@ class CustomNavBar extends Component {
                 <NavLink href='leaderboard'>Leaderboard</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Logged in as: {this.props.authedUser}
+                <DropdownToggle nav caret>Logged:
+                  {/* Logged in as: {this.props.authedUser} */}
                 </DropdownToggle>
                 <DropdownMenu className='push-right'>
              
-                  <DropdownItem>
+                  <DropdownItem onClick={this.handleLogOff}>
                     Log Out
                   </DropdownItem>
                 </DropdownMenu>

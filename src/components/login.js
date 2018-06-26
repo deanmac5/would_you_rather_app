@@ -1,11 +1,30 @@
 import React, { Component } from 'react';
 
+import User from './user';
+import { connect } from 'react-redux'
+
 class Login extends Component {
-    render() {
-        return (
-            <h1>This is the login page</h1>
-        );
-    }
+    render(){
+    const { usersIds } = this.props
+    return (
+      <div>
+        <h1>Login:</h1>
+       
+        <ul>
+          {usersIds.map(id =>
+          (<li key={id}>
+            {<User id={id} />}
+          </li>))}
+        </ul>
+      </div>
+    )
+  }
 }
 
-export default Login;
+function mapStateToProps ({ users }) {
+  return {
+    usersIds: Object.keys(users)
+  }
+}
+
+export default connect(mapStateToProps)(Login)
