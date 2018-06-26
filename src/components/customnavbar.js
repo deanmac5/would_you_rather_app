@@ -55,7 +55,7 @@ class CustomNavBar extends Component {
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>Logged:
-                  {/* Logged in as: {this.props.authedUser} */}
+                  Logged in 
                 </DropdownToggle>
                 <DropdownMenu className='push-right'>
              
